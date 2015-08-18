@@ -1,4 +1,5 @@
-﻿using Sycade.NativeDnsClient.Records;
+﻿using Sycade.NativeDnsClient.Native;
+using Sycade.NativeDnsClient.Records;
 using System;
 using System.Linq;
 using System.Reflection;

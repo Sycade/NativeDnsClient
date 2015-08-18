@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace Sycade.NativeDnsClient
+namespace Sycade.NativeDnsClient.Native
 {
     internal class DnsNativeContext : IDisposable
     {
@@ -12,12 +12,12 @@ namespace Sycade.NativeDnsClient
         public void Dispose()
         {
             if (_queryResultsPtr != IntPtr.Zero)
-                DnsRecordListFree(_queryResultsPtr, 0);
+                DnsRecordListFree(_queryResultsPtr, DnsFreeType.RecordList);
         }
 
         internal IRecordStruct[] Resolve(Type structType, string name, DnsRecordType type, DnsQueryOptions options)
         {
-            var result = DnsQuery(ref name, type, options, 0, ref _queryResultsPtr, 0);
+            var result = DnsQuery(ref name, type, options, IntPtr.Zero, ref _queryResultsPtr, IntPtr.Zero);
 
             if (result != 0)
                 throw new DnsQueryException(result);
@@ -35,11 +35,11 @@ namespace Sycade.NativeDnsClient
             return records.ToArray();
         }
 
-        [DllImport("dnsapi", EntryPoint = "DnsQuery_W", CharSet = CharSet.Unicode, SetLastError = true, ExactSpelling = true)]
-        private static extern int DnsQuery([MarshalAs(UnmanagedType.VBByRefStr)] ref string lpstrName, DnsRecordType wType, DnsQueryOptions Options,
-            int pExtra, ref IntPtr ppQueryResultsSet, int pReserved);
+        [DllImport("dnsapi", EntryPoint = "DnsQuery_W", CharSet = CharSet.Unicode)]
+        private static extern int DnsQuery([MarshalAs(UnmanagedType.VBByRefStr)] ref string lpstrName, DnsRecordType wType,
+            DnsQueryOptions Options, IntPtr pExtra, ref IntPtr ppQueryResultsSet, IntPtr pReserved);
 
-        [DllImport("dnsapi", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern void DnsRecordListFree(IntPtr pRecordList, int FreeType);
+        [DllImport("dnsapi")]
+        private static extern void DnsRecordListFree(IntPtr pRecordList, DnsFreeType FreeType);
     }
 }

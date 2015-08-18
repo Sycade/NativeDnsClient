@@ -14,7 +14,7 @@ namespace Sycade.NativeDnsClient.Records
         {
             Name = Marshal.PtrToStringAuto(recordStruct.pName);
 
-            Value = Marshal.PtrToStringUni(recordStruct.pStringArray);
+            Value = Marshal.PtrToStringAuto(recordStruct.pStringArray);
         }
     }
 }

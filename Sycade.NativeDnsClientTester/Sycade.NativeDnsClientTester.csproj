@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E52CE527-9F8C-4C47-8CB3-AD1A98E8670F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{A2DE330E-B6BA-46DF-9A8F-362D8A90AB17}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sycade.NativeDnsClient</RootNamespace>
-    <AssemblyName>Sycade.NativeDnsClient</AssemblyName>
+    <RootNamespace>Sycade.NativeDnsClientTester</RootNamespace>
+    <AssemblyName>Sycade.NativeDnsClientTester</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,25 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DnsClient.cs" />
-    <Compile Include="Native\DnsFreeType.cs" />
-    <Compile Include="Native\DnsNativeContext.cs" />
-    <Compile Include="DnsQueryException.cs" />
-    <Compile Include="DnsQueryOptions.cs" />
-    <Compile Include="DnsRecordType.cs" />
-    <Compile Include="Records\DnsTypeMappingAttribute.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecordStructs\TxtRecordStruct.cs" />
-    <Compile Include="Records\CnameRecord.cs" />
-    <Compile Include="Records\RecordBase.cs" />
-    <Compile Include="Records\TxtRecord.cs" />
-    <Compile Include="Records\PtrRecord.cs" />
-    <Compile Include="RecordStructs\PtrRecordStruct.cs" />
-    <Compile Include="RecordStructs\IRecordStruct.cs" />
-    <Compile Include="Records\ARecord.cs" />
-    <Compile Include="Records\SrvRecord.cs" />
-    <Compile Include="RecordStructs\ARecordStruct.cs" />
-    <Compile Include="RecordStructs\SrvRecordStruct.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sycade.NativeDnsClient\Sycade.NativeDnsClient.csproj">
+      <Project>{e52ce527-9f8c-4c47-8cb3-ad1a98e8670f}</Project>
+      <Name>Sycade.NativeDnsClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
