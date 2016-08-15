@@ -3,16 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace Sycade.NativeDnsClient.Records
 {
+    [DnsTypeMapping(typeof(MxRecordStruct), DnsRecordType.Mx)]
     public class MxRecord : RecordBase, IPrioritizedRecord
     {
-        public string Name { get; set; }
         public int Priority { get; set; }
 
         internal MxRecord(MxRecordStruct recordStruct)
-            : base(recordStruct)
+            : base(Marshal.PtrToStringAuto(recordStruct.pNameExchange), recordStruct.dwTtl)
         {
-            Name = Marshal.PtrToStringAuto(recordStruct.pNameExchange);
-
             Priority = recordStruct.wPreference;
         }
     }

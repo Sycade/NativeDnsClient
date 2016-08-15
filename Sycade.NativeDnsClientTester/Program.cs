@@ -9,9 +9,9 @@ namespace Sycade.NativeDnsClientTester
     {
         static void Main(string[] args)
         {
-            var records = DnsClient.Resolve<SrvRecord>("sycade.com");
+            var records = DnsClient.Resolve<SrvRecord>("_e2tp._tcp.sycadetest.com");
 
-            records.OrderByPriorityAndWeight();
+            //records.OrderByPriorityAndWeight();
 
             foreach (var record in records)
                 Console.WriteLine(record);

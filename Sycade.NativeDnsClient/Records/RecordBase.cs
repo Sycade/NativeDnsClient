@@ -2,11 +2,18 @@
 {
     public abstract class RecordBase
     {
+        public string Name { get; }
         public int TimeToLive { get; }
 
-        internal RecordBase(dynamic recordStruct)
+        internal RecordBase(string name, int ttl)
         {
-            TimeToLive = recordStruct.dwTtl;
+            Name = name;
+            TimeToLive = ttl;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
