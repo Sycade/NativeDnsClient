@@ -42,15 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DnsClient.cs" />
+    <Compile Include="Extensions\RecordEnumerableExtensions.cs" />
     <Compile Include="Native\DnsFreeType.cs" />
     <Compile Include="Native\DnsNativeContext.cs" />
     <Compile Include="DnsQueryException.cs" />
     <Compile Include="DnsQueryOptions.cs" />
     <Compile Include="DnsRecordType.cs" />
+    <Compile Include="RecordStructs\MxRecordStruct.cs" />
     <Compile Include="Records\DnsTypeMappingAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordStructs\TxtRecordStruct.cs" />
     <Compile Include="Records\CnameRecord.cs" />
+    <Compile Include="Records\IPrioritizedRecord.cs" />
+    <Compile Include="Records\IWeightedRecord.cs" />
+    <Compile Include="Records\MxRecord.cs" />
     <Compile Include="Records\RecordBase.cs" />
     <Compile Include="Records\TxtRecord.cs" />
     <Compile Include="Records\PtrRecord.cs" />

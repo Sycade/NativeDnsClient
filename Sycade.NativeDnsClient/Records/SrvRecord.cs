@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Sycade.NativeDnsClient.Records
 {
     [DnsTypeMapping(typeof(SrvRecordStruct), DnsRecordType.Srv)]
-    public class SrvRecord : RecordBase
+    public class SrvRecord : RecordBase, IWeightedRecord, IPrioritizedRecord
     {
         public string Name { get; }
         public int Priority { get; }
